@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample - Thymeleaf</title>
+
+    <style>
+        table {
+          width: 100%;
+        }
+        table, th, td {
+          border: 1px solid #bcbcbc;
+        }
+    </style>
+</head>
+<body>
+    <H1>Sample - Thymeleaf</H1>
+    <h2> Server time is <span th:text="${serverTime}"></span></h2>
+
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Cell Phone</th>
+        </tr>
+        <tr th:each="sample : ${sampleList}">
+            <td th:text="${sample.id}"></td>
+            <td th:text="${sample.name}"></td>
+            <td th:text="${sample.addr}"></td>
+            <td th:text="${sample.cellPhone}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

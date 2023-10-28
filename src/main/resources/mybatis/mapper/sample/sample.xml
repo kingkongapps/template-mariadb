@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kingkongapps.templatemariadb.mapper.SampleMapper">
+    <select id="getSampleList" resultType="SampleVO">
+        SELECT id, name, addr, cell_phone
+        FROM sample
+        ORDER BY 1
+    </select>
+</mapper>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SampleAjax</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <H1>Welcome~ Home~!</H1>
+
+    <form action="/api/v1/getSampleList" method="POST">
+    <table>
+        <tr>
+            <td><input type="hidden" id="id"></td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td><input type="text" id="name" name="name" value="TEST"></td>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td><input type="text" id="addr" name="addr" value="서울시 관악구"></td>
+        </tr>
+        <tr>
+            <td>연락처</td>
+            <td><input type="text" id="cellPhone" name="cellPhone" value="010-1111-2222"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="button" onclick="getSampleList()">Submit</button></td>
+        </tr>
+    </table>
+    </form>
+
+<script>
+    function getSampleList() {
+
+        var param = {};
+        param.id        = $("#id").val();
+        param.name      = $("#name").val();
+        param.addr      = $("#addr").val();
+        param.cellPhone = $("#cellPhone").val();
+
+        console.log(param);
+
+        $.ajax({
+            url : '/api/v1/getSampleList',
+            method : 'post',
+            data : JSON.stringify(param),
+            dataType : 'json',               /*html, text, json, xml, script*/
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Content-type","application/json");
+            },
+            success : function(res){
+                console.log(res);
+                alert(res.msg);
+            },
+            error : function(xhr, status, error) {
+                console.log(xhr);
+                console.log(status);                // 'error'
+                console.log(error);                 // 'Not Found'
+
+                alert(xhr.status);           // 에러코드(404, 500 등)
+                alert(xhr.responseText);     // html 포맷의 에러 메시지
+            }
+        });
+    }
+</script>
+</body>
+</html>
