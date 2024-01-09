@@ -75,7 +75,7 @@ spring.datasource.password=test1234
 
 #mybatis-mapper
 mybatis.mapper-locations=classpath:/mybatis/mapper/**/*.xml
-mybatis.type-**aliases**-package=com.templatemariadb.vo
+mybatis.type-aliases-package=com.templatemariadb.vo        <--- aliases 가 복수 임.
 mybatis.configuration.map-underscore-to-camel-case=true
 ```
 
